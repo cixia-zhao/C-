@@ -1,0 +1,21 @@
+﻿# Visual Studio generated files
+*.obj
+*.exe
+*.pdb
+*.ilk
+*.suo
+*.user
+*.vcxproj.user
+*.log
+
+# Folders to ignore
+.vs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+Win32/
+
+# Other temporary files
+*.tlog
+*.lastbuildstate
+*.recipe
