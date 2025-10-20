@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+#include <stdbool.h>
 typedef struct
 {
 	int data[10];
@@ -22,6 +22,21 @@ void ListInsert(SqList* s, int i, int e)
 	s->data[i - 1] = e;
 	s->len++;
 }
+bool ListDelete(SqList* s, int i, int* e)
+{
+	if (i<1 || i >s->len)
+		return false;
+	*e = s->data[i - 1];
+	for (int j = i; j < s->len; j++)
+		s->data[j - 1] = s->data[j];
+	s->len--;
+	return true;
+}
+int GetElem(SqList* s, int i)
+{
+
+	return s->data[i - 1];
+}
 void Print(SqList* s)
 {
 	printf("ciontext: [");
@@ -34,11 +49,13 @@ void Print(SqList* s)
 }
 int main()
 {
-	SqList s;
+	SqList s; 
 	Init(&s);
-	Print(&s);
-	printf("插入后\n");
-	ListInsert(&s, 1, 12);
-	Print(&s);
+	ListInsert(&s, 1, 100); 
+	ListInsert(&s, 2, 200); 
+	printf("重新插入元素后:\n");
+	Print(&s); 
+	int foundElement = GetElem(&s, 1); 
+	printf("通过 GetElem 找到的第一个元素是: %d\n", foundElement); 
 	return 0;
 }
