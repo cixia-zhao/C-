@@ -8,14 +8,60 @@ typedef int ElemType;
 typedef struct
 {
 
-	ElemType date[MAXSIZE];
+	ElemType data[MAXSIZE];
 	int top;
 }Sqstack;
 
-int main()
+void InitStack(Sqstack* s)
 {
 
+	s->top = -1;
+	printf("栈已初始化\n");
+}
+bool IsEmpty(Sqstack* s)
+{
+	if (s->top == -1)
+	{
+		return true;
+	}
+	else
+	{
 
+		return false;
+	}
+}
+bool IsFull(Sqstack* s)
+{
+	if (s->top == MAXSIZE-1)
+	{
+		return true;
+	}
+	else
+	{
 
+		return false;
+	}
+}
+
+bool Push(Sqstack* s, ElemType e)
+{
+	if (IsFull(s))
+	{
+		printf("栈满了，%d无法入\n", e);
+		return false;
+
+	}
+	s->top++;
+	s->data[s->top] = e;
+	printf("元素%d成功入栈，栈顶索引为%d\n", e, s->top);
+	return true;
+
+}
+
+int main()
+{
+	Sqstack Mystack;
+	InitStack(&Mystack);
+	Push(&Mystack,10);
 	return 0;
 }
